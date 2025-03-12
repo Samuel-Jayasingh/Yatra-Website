@@ -11873,10 +11873,58 @@ a{
   font-family: GOT3;
 }
   
-#regButton:hover{
-  /* color: #ed2a2a75; */
-  background-color: #ed2a2a75;
-    
+#regButton {
+  position: relative;
+  border: 2px solid #0ff;
+  color: #fff;
+  background: linear-gradient(45deg, #ff003c, #ff00ff);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-shadow: 0 0 5px rgba(255, 0, 60, 0.5);
+  box-shadow: 0 0 10px rgba(255, 0, 60, 0.3),
+              inset 0 0 5px rgba(255, 0, 60, 0.3);
+}
+
+#regButton:hover {
+  background: linear-gradient(45deg, #ff003c, #ff00ff, #00fff2);
+  background-size: 200% 200%;
+  animation: cyberGlow 1.5s linear infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 60, 0.7),
+              inset 0 0 10px rgba(0, 255, 242, 0.5);
+  border: 2px solid #0ff;
+  transform: skewX(-5deg);
+  color: #0ff;
+}
+
+#regButton:hover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    transparent, rgba(0, 255, 242, 0.3), transparent);
+  animation: cyberScan 2s linear infinite;
+}
+
+@keyframes cyberGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes cyberScan {
+  0% { transform: rotate(45deg) translateX(-50%); }
+  100% { transform: rotate(45deg) translateX(50%); }
+}
+
+#regButton:active {
+  filter: brightness(1.5);
+  transform: scale(0.98) skewX(-5deg);
 }
 
 
