@@ -68,6 +68,12 @@
   --bs-body-bg: #fff;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'Squartiqa';
   src: url('../fonts/Squartiqa4F.otf') format('opentype');
@@ -81,12 +87,6 @@
   font-weight: normal;
   font-style: normal;
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -108,7 +108,6 @@ body {
   background-color: black;
 }
 
-/* Headings - Squartiqa */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Squartiqa', sans-serif !important;
 }
@@ -11595,20 +11594,30 @@ body {
   border: 0;
 }
 
+.masthead .text-center h1,
+.masthead .text-center h2,
+.masthead .text-center h3,
+.masthead .text-center h4 {
+    font-family: 'Squartiqa', sans-serif !important;
+}
+
+.masthead .text-center p {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 .masthead {
   position: relative;
   width: 100%;
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/bg-masthead.JPG");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../../assets/img/bg-masthead.JPG");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 .masthead h1, .masthead .h1 {
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
@@ -11643,12 +11652,17 @@ body {
   }
 }
 
+.about-section h2 {
+  font-family: 'Squartiqa', sans-serif !important;
+}
+
 .about-section {
   padding-top: 10rem;
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
 .about-section p {
   margin-bottom: 5rem;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .projects-section {
@@ -11817,9 +11831,6 @@ body {
 .team-slider .owl-dot.active {
 	background-color: coral;
 }
-
-
-
 
 .move-animation {
 	position: relative;

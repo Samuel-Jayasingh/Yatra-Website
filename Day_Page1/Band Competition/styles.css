@@ -1,8 +1,24 @@
+/* Custom Fonts */
+@font-face {
+    font-family: 'Squartiqa';
+    src: url('../../fonts/Squartiqa4F.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../fonts/MonumentExtended-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Body Styles */
 body {
     background-image: url("Band Competition.jpg");
     background-attachment: fixed; /* Keeps the background fixed while scrolling */
     background-size: cover;
-    font-family: sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Set Montserrat as the default font */
     margin: 0;
     padding: 0;
     display: flex;
@@ -24,6 +40,7 @@ body {
 }
 
 .hero h1 {
+    font-family: 'Squartiqa', sans-serif !important; /* Use Squartiqa for headings */
     font-size: 3rem;
     margin: 0;
 }
@@ -41,6 +58,7 @@ body {
 }
 
 .description h2 {
+    font-family: 'Squartiqa', sans-serif !important; /* Use Squartiqa for headings */
     font-size: 2rem;
     margin-bottom: 1rem;
 }
@@ -51,26 +69,11 @@ body {
 }
 
 .rules li {
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for body text */
     margin-bottom: 1rem;
 }
 
-@font-face {
-    font-family: "GO3";
-    src: url("../../fonts/Ryzes-ax92x.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-h1,h2{
-    font-family: GO3;
-}
-
-@font-face {
-    font-family: "GO3";
-    src: url("../../fonts/Ryzes-ax92x.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-h1,h2{
-    font-family: GO3 !important;
+/* Global Font Assignments */
+h1, h2 {
+    font-family: 'Squartiqa', sans-serif !important; /* Ensure all headings use Squartiqa */
 }
