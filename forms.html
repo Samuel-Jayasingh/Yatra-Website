@@ -1,267 +1,437 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="en" style="background-color: black;">
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Yatra'25 Registration Form" />
+    <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Yatra'25 Registration</title>
+    <title>Yatra'25</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
+    <!-- Font Awesome icons (free version) -->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
+    <!-- Core theme CSS (includes Bootstrap) -->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        html,
-        body {
-            background-color: black;
-            color: white;
-            height: 100%;
-        }
-
-        .event-card {
-            background: #2a2a2a;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .event-category {
-            color: #ff6b6b;
-            border-bottom: 2px solid #ff6b6b;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-
-        .form-check-label {
-            color: white;
-        }
-
-        .form-check-input:checked {
-            background-color: #ff6b6b;
-            border-color: #ff6b6b;
-        }
+      html,
+      body {
+        background-color: black;
+        color: white;
+        height: 100%;
+      }
+      .event-card {
+        background: #2a2a2a;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .event-category {
+        color: #ff6b6b;
+        border-bottom: 2px solid #ff6b6b;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+      }
+      .form-check-label {
+        color: white;
+      }
+      .form-check-input:checked {
+        background-color: #ff6b6b;
+        border-color: #ff6b6b;
+      }
+      /* Add padding-top to body to ensure content doesn't get overlapped by fixed nav */
+      body {
+          padding-top: 100px; /* Adjust based on your nav height */
+      }
+      /* Increase padding for mobile if needed */
+      @media (max-width: 768px) {
+          body {
+              padding-top: 120px;
+          }
+      }
     </style>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-</head>
+  </head>
+  <body id="page-top">
 
-<body id="page-top">
+    <!--
+      NOTE ON CORS:
+      Firestore automatically sends the proper CORS headers for its requests.
+      However, if you experience CORS issues with other assets (or if you're using Cloud Functions),
+      you'll need to configure CORS on the server-side.
+      
+      For Firebase Hosting, add the following to your firebase.json:
+      
+      {
+        "hosting": {
+          "public": "public",
+          "headers": [
+            {
+              "source": "**",
+              "headers": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*" 
+                }
+              ]
+            }
+          ]
+        }
+      }
+      
+      For Cloud Functions, you can handle CORS like this (using the 'cors' package):
+      
+      const functions = require('firebase-functions');
+      const cors = require('cors')({ origin: true });
+      
+      exports.myFunction = functions.https.onRequest((req, res) => {
+        cors(req, res, () => {
+          // Your function code here.
+          res.send("Hello from function with CORS!");
+        });
+      });
+    -->
+  </head>
+  <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="transition: top 0.3s;">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#page-top"><img src="assets/img/ritlogo2.png" height="80" width="200"></a>
+          <a class="navbar-brand" href="#page-top">
+            <img src="assets/img/ritlogo2.png" height="80" width="200" alt="Logo" />
+          </a>
         </div>
-    </nav>
-
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <img src="assets/img/yatratxt1-min-removebg-preview.png" height="80" width="200" alt="Yatra Logo" style="padding-top: 10px;">
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <!-- Hide navbar on scroll script -->
+    <script>
+        let prevScrollPos = window.pageYOffset;
+        window.onscroll = function () {
+          const currentScrollPos = window.pageYOffset;
+          const nav = document.getElementById("mainNav");
+          if (prevScrollPos > currentScrollPos) {
+            // Scrolling up - show navbar
+            nav.style.top = "0";
+          } else {
+            // Scrolling down - hide navbar (adjust if needed)
+            nav.style.top = "-100px";
+          }
+          prevScrollPos = currentScrollPos;
+        };
+      </script>
+  
     <!-- Registration Form -->
-    <section class="form-section text-center" style="padding-top: 100px;">
-        <div class="container px-4 px-lg-5">
-            <h2 class="text-white mb-4">Yatra'25 Registration Form</h2>
-            <form id="registrationForm">
-                <!-- Personal Details -->
-                <div class="form-group text-white-50 text-start mb-4">
-                    <h4 class="text-white mb-3">1. Personal Details</h4>
-                    <label for="name">1.1 - Name:</label>
-                    <input type="text" class="form-control" id="name" required>
-                    <label for="gender">1.2 - Gender:</label>
-                    <select class="form-control" id="gender" required>
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                    </select>
-                    <label for="mobile">1.3 - Contact Phone Number:</label>
-                    <input type="tel" class="form-control" id="mobile" required>
-                    <label for="email">1.4 - Contact E-Mail Id:</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-
-                <!-- Event Registrations -->
-                <div class="form-group text-white-50 text-start mb-4">
-                    <h4 class="text-white mb-3">3. Event Registrations</h4>
-                    <div class="row">
-                        <!-- Day 1 Group Events -->
-                        <div class="col-md-6">
-                            <div class="event-card">
-                                <h5 class="event-category">DAY 1 GROUP EVENTS</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="bandPerformance">
-                                    <label class="form-check-label" for="bandPerformance">Band Performance</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="channelSurfing">
-                                    <label class="form-check-label" for="channelSurfing">Channel Surfing</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="boxCricket">
-                                    <label class="form-check-label" for="boxCricket">Box Cricket</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="groupPerformance">
-                                    <label class="form-check-label" for="groupPerformance">Group Performance</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Day 1 Individual Events -->
-                        <div class="col-md-6">
-                            <div class="event-card">
-                                <h5 class="event-category">DAY 1 INDIVIDUAL EVENTS</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="classicalDance">
-                                    <label class="form-check-label" for="classicalDance">Classical Dance</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="beatboxBattle">
-                                    <label class="form-check-label" for="beatboxBattle">Beatbox Battle (Solo/Duo)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="solo">
-                                    <label class="form-check-label" for="solo">Solo Competition</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rjHunt">
-                                    <label class="form-check-label" for="rjHunt">RJ Hunt</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Day 2 Group Events -->
-                        <div class="col-md-6">
-                            <div class="event-card">
-                                <h5 class="event-category">DAY 2 GROUP EVENTS</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="dualAdaptune">
-                                    <label class="form-check-label" for="dualAdaptune">Dual Adaptune</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="groupDance">
-                                    <label class="form-check-label" for="groupDance">Group Dance</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="mimg">
-                                    <label class="form-check-label" for="mimg">MIMG</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Day 2 Individual Events -->
-                        <div class="col-md-6">
-                            <div class="event-card">
-                                <h5 class="event-category">DAY 2 INDIVIDUAL EVENTS</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="designing">
-                                    <label class="form-check-label" for="designing">Designing</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="photography">
-                                    <label class="form-check-label" for="photography">Photography</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Payment Portal -->
-                <div class="form-group text-white-50 text-start mb-4">
-                    <h4 class="text-white mb-3">4. Payment Portal</h4>
-                    <label for="paymentMethod">Payment Method:</label>
-                    <select class="form-control" id="paymentMethod" required>
-                        <option>Net Banking</option>
-                        <option>Credit/Debit Card</option>
-                    </select>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+    <section class="container mt-5">
+      <h1 class="text-center">Yatra'25 Registration</h1>
+      <form id="registrationForm">
+        <!-- Personal Details -->
+        <div class="event-card">
+          <h2 class="event-category">Personal Details</h2>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" id="gender" required>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="contactPhone" class="form-label">Contact Phone Number</label>
+            <input type="tel" class="form-control" id="contactPhone" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Contact E-Mail Id</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Your location (Area)</label>
+            <input type="text" class="form-control" id="location" required />
+          </div>
         </div>
-    </section>
+
+        <!-- College Details -->
+        <div class="event-card">
+          <h2 class="event-category">College Details</h2>
+          <div class="mb-3">
+            <label for="idCardNo" class="form-label"
+              >Reg. No. (OR) ID Card No. (OR) Valid Gov. ID No.</label
+            >
+            <input type="text" class="form-control" id="idCardNo" required />
+          </div>
+          <div class="mb-3">
+            <label for="collegeName" class="form-label">College Name</label>
+            <select class="form-select" id="collegeName" required>
+              <option value="RIT Alumni">RIT (Alumni)</option>
+              <option value="RIT">RIT</option>
+              <option value="RSB Alumni">RSB (Alumni)</option>
+              <option value="RSB">RSB</option>
+              <option value="REC Alumni">REC (Alumni)</option>
+              <option value="REC">REC</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <select class="form-select" id="department" required>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="IT">IT</option>
+              <option value="MECH">MECH</option>
+              <option value="EEE">EEE</option>
+              <option value="CCE">CCE</option>
+              <option value="AI&DS">AI&DS</option>
+              <option value="CSBS">CSBS</option>
+              <option value="AI&ML">AI&ML</option>
+              <option value="VLSI">VLSI</option>
+              <option value="BIO-TECH">BIO-TECH</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="year" class="form-label">Year</label>
+            <select class="form-select" id="year" required>
+              <option value="I">I</option>
+              <option value="II">II</option>
+              <option value="III">III</option>
+              <option value="IV">IV</option>
+              <option value="Alumini">Alumini</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="section" class="form-label">Section</label>
+            <select class="form-select" id="section" required>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="hostelDayscholar" class="form-label">Hostel / Dayscholar</label>
+            <select class="form-select" id="hostelDayscholar" required>
+              <option value="H">Hostel</option>
+              <option value="D">Dayscholar</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Event Registrations -->
+        <div class="form-group text-white-50 text-start mb-4">
+          <h4 class="text-white mb-3">3. Event Registrations</h4>
+          <div class="row">
+            <!-- Day 1 Group Events -->
+            <div class="col-md-6">
+              <div class="event-card">
+                <h5 class="event-category">DAY 1 GROUP EVENTS</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="bandPerformance" />
+                  <label class="form-check-label" for="bandPerformance">Band Performance</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="channelSurfing" />
+                  <label class="form-check-label" for="channelSurfing">Channel Surfing</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="boxCricket" />
+                  <label class="form-check-label" for="boxCricket">Box Cricket</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="groupPerformance" />
+                  <label class="form-check-label" for="groupPerformance">Group Performance</label>
+                </div>
+              </div>
+            </div>
+            <!-- Day 1 Individual Events -->
+            <div class="col-md-6">
+              <div class="event-card">
+                <h5 class="event-category">DAY 1 INDIVIDUAL EVENTS</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="classicalDance" />
+                  <label class="form-check-label" for="classicalDance">Classical Dance</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="beatboxBattle" />
+                  <label class="form-check-label" for="beatboxBattle">Beatbox Battle (Solo/Duo)</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="solo" />
+                  <label class="form-check-label" for="solo">Solo Competition</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="rjHunt" />
+                  <label class="form-check-label" for="rjHunt">RJ Hunt</label>
+                </div>
+              </div>
+            </div>
+            <!-- Day 2 Group Events -->
+            <div class="col-md-6">
+              <div class="event-card">
+                <h5 class="event-category">DAY 2 GROUP EVENTS</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="dualAdaptune" />
+                  <label class="form-check-label" for="dualAdaptune">Dual Adaptune</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="groupDance" />
+                  <label class="form-check-label" for="groupDance">Group Dance</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="mimg" />
+                  <label class="form-check-label" for="mimg">MIMG</label>
+                </div>
+              </div>
+            </div>
+            <!-- Day 2 Individual Events -->
+            <div class="col-md-6">
+              <div class="event-card">
+                <h5 class="event-category">DAY 2 INDIVIDUAL EVENTS</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="designing" />
+                  <label class="form-check-label" for="designing">Designing</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="photography" />
+                  <label class="form-check-label" for="photography">Photography</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-danger glow"><h2>Submit</h2></button>
+          </div>
+          
+          <style>
+            /* Adjusted glow effect to a red tone */
+            .glow {
+              box-shadow: 0 0 10px rgba(220,20,60,0.7), 0 0 20px rgba(220,20,60,0.5);
+              transition: box-shadow 0.3s ease-in-out;
+            }
+            .glow:hover {
+              box-shadow: 0 0 20px rgba(220,20,60,1), 0 0 30px rgba(220,20,60,0.8);
+            }
+          </style>
+          
+          
+          
+  
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Firebase Configuration and Script -->
-    <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDi--pTY8V_zOGCw1jerm37Rv9y262dIcA",
-            authDomain: "yatra25-eae76.firebaseapp.com",
-            projectId: "yatra25-eae76",
-            storageBucket: "yatra25-eae76.appspot.com",
-            messagingSenderId: "683117333671",
-            appId: "1:683117333671:web:1a69bc3b742a176e3d5f82",
-            measurementId: "G-RYR0110LWD"
+    <!-- Firebase Configuration and Submission Script using Firebase v9 Modular SDK -->
+    <script type="module">
+      // Import the functions needed from Firebase SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDi--pTY8V_zOGCw1jerm37Rv9y262dIcA",
+  authDomain: "yatra25-eae76.firebaseapp.com",
+  projectId: "yatra25-eae76",
+  storageBucket: "yatra25-eae76.firebasestorage.app",
+  messagingSenderId: "683117333671",
+  appId: "1:683117333671:web:1a69bc3b742a176e3d5f82",
+  measurementId: "G-RYR0110LWD"
+};
+
+      // Initialize Firebase and Firestore
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const form = document.getElementById("registrationForm");
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        // Collect form data with trimming where appropriate
+        const name = document.getElementById("name").value.trim();
+        const gender = document.getElementById("gender").value;
+        const email = document.getElementById("email").value.trim();
+        const contactPhone = document.getElementById("contactPhone").value.trim();
+        const locationValue = document.getElementById("location").value.trim();
+        const idCardNo = document.getElementById("idCardNo").value.trim();
+        const collegeName = document.getElementById("collegeName").value;
+        const department = document.getElementById("department").value;
+        const year = document.getElementById("year").value;
+        const section = document.getElementById("section").value;
+        const hostelDayscholar = document.getElementById("hostelDayscholar").value;
+
+        // Define event arrays for each category
+        const day1GroupEvents = ["bandPerformance", "channelSurfing", "boxCricket", "groupPerformance"];
+        const day1IndividualEvents = ["classicalDance", "beatboxBattle", "solo", "rjHunt"];
+        const day2GroupEvents = ["dualAdaptune", "groupDance", "mimg"];
+        const day2IndividualEvents = ["designing", "photography"];
+
+        // Filter selected checkboxes
+        const selectedDay1GroupEvents = day1GroupEvents.filter(
+          (event) => document.getElementById(event).checked
+        );
+        const selectedDay1IndividualEvents = day1IndividualEvents.filter(
+          (event) => document.getElementById(event).checked
+        );
+        const selectedDay2GroupEvents = day2GroupEvents.filter(
+          (event) => document.getElementById(event).checked
+        );
+        const selectedDay2IndividualEvents = day2IndividualEvents.filter(
+          (event) => document.getElementById(event).checked
+        );
+
+        // Create an object with the collected form data and a server timestamp
+        const formData = {
+          name,
+          gender,
+          email,
+          contactPhone,
+          location: locationValue,
+          idCardNo,
+          collegeName,
+          department,
+          year,
+          section,
+          hostelDayscholar,
+          selectedDay1GroupEvents,
+          selectedDay1IndividualEvents,
+          selectedDay2GroupEvents,
+          selectedDay2IndividualEvents,
+          timestamp: serverTimestamp(),
         };
 
-        firebase.initializeApp(firebaseConfig);
-
-        const db = firebase.firestore();
-        const storage = firebase.storage();
-
-        const form = document.getElementById('registrationForm');
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Form Data
-            const name = document.getElementById('name').value;
-            const gender = document.getElementById('gender').value;
-            const mobile = document.getElementById('mobile').value;
-            const email = document.getElementById('email').value;
-
-            const day1GroupEvents = [
-                'bandPerformance', 'channelSurfing', 'boxCricket', 'groupPerformance'
-            ];
-
-            const day1IndividualEvents = [
-                'classicalDance', 'beatboxBattle', 'solo', 'rjHunt'
-            ];
-
-            const day2GroupEvents = [
-                'dualAdaptune', 'groupDance', 'mimg'
-            ];
-
-            const day2IndividualEvents = [
-                'designing', 'photography'
-            ];
-
-            const selectedDay1GroupEvents = day1GroupEvents.filter(event => document.getElementById(event).checked);
-            const selectedDay1IndividualEvents = day1IndividualEvents.filter(event => document.getElementById(event).checked);
-            const selectedDay2GroupEvents = day2GroupEvents.filter(event => document.getElementById(event).checked);
-            const selectedDay2IndividualEvents = day2IndividualEvents.filter(event => document.getElementById(event).checked);
-
-            // Save data to Firestore
-            const formData = {
-                name,
-                gender,
-                mobile,
-                email,
-                selectedDay1GroupEvents,
-                selectedDay1IndividualEvents,
-                selectedDay2GroupEvents,
-                selectedDay2IndividualEvents
-            };
-
-            db.collection('registrations').add(formData).then(() => {
-                alert("Registration Successful!");
-            }).catch((error) => {
-                console.error("Error adding document: ", error);
-                alert("An error occurred while submitting your registration.");
-            });
-        });
+        try {
+          // Save the form data to Firestore
+          await addDoc(collection(db, "registrations"), formData);
+          alert("Complete the Payment to Confirm your Registration!");
+          window.location.href = "https://formbuilder.ccavenue.com/live/icici-bank/rajalakshmi-institue-of-technology-2/yathra24";
+        } catch (error) {
+          console.error("Error adding document: ", error);
+          alert("An error occurred while submitting your registration.");
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>
