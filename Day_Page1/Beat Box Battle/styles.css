@@ -54,6 +54,7 @@ body {
     background-color: rgba(255, 255, 255, 0.8); /* Add a background color to enhance readability */
     border-radius: 10px; /* Add rounded corners for aesthetics */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for body text */
 }
 
 .description h2 {
@@ -75,4 +76,8 @@ body {
 /* Global Font Assignments */
 h1, h2 {
     font-family: 'Squartiqa', sans-serif !important; /* Ensure all headings use Squartiqa */
+}
+
+p {
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for body text */
 }
