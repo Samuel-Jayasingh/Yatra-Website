@@ -97,21 +97,13 @@
   </head>
   <body id="page-top">
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="transition: top 0.3s;">
-        <div class="container px-4 px-lg-5">
-          <a class="navbar-brand" href="#page-top">
-            <img src="assets/img/ritlogo2.png" height="80" width="200" alt="Logo" />
-          </a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <img src="assets/img/yatratxt1-min-removebg-preview.png" height="80" width="200" alt="Yatra Logo" style="padding-top: 10px;">
-            </li>
-          </ul>
-        </div>
-      </nav>
-    <!-- Hide navbar on scroll script -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="backdrop-filter: blur(10px);">
+      <div class="container px-4 px-lg-5">
+          <a class="navbar-brand" href="#page-top"><img src="assets/img/ritlogo2.png"></a>
+      <div class="navbar-brand"><img src="assets/img/yatratxt1-min-removebg-preview.png" style="padding-top: 8px;"></div>
+      </div>
+  </nav>
+    <!-- Hide navbar on scroll script
     <script>
         let prevScrollPos = window.pageYOffset;
         window.onscroll = function () {
@@ -126,10 +118,10 @@
           }
           prevScrollPos = currentScrollPos;
         };
-      </script>
+      </script> -->
   
     <!-- Registration Form -->
-    <section class="container mt-5">
+    <section class="container">
       <h1 class="text-center">Yatra'25 Registration</h1>
       <form id="registrationForm">
         <!-- Personal Details -->
@@ -318,7 +310,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-danger glow"><h2>Submit</h2></button>
+            <button type="submit" class="btn btn-danger glow" style="margin-bottom: 50px;"><h2>Submit</h2></button>
           </div>
           
           <style>

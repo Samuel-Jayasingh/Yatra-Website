@@ -78,4 +78,84 @@ body {
 /* Global Font Assignments */
 h1, h2 {
     font-family: 'Squartiqa', sans-serif !important; /* Ensure all headings use Squartiqa */
+}/* Body Styles */
+body {
+    background-image: url("5651029.jpg");
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif; /* Set Montserrat as the default font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Aligns content vertically */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+}
+
+/* Custom Fonts */
+@font-face {
+    font-family: 'Squartiqa';
+    src: url('../../fonts/Squartiqa4F.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../fonts/MonumentExtended-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Hero Section */
+.hero {
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    margin-bottom: 2rem; /* Add margin to separate sections */
+}
+
+.hero h1 {
+    font-family: 'Squartiqa', sans-serif !important; /* Use Squartiqa for headings */
+    font-size: 3rem;
+    margin: 0;
+}
+
+/* Description and Rules Sections */
+.description,
+.rules {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 800px; /* Set a maximum width */
+    padding: 2rem;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: rgba(255, 255, 255, 0.8); /* Add a background color to enhance readability */
+    border-radius: 10px; /* Add rounded corners for aesthetics */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+}
+
+.description h2 {
+    font-family: 'Squartiqa', sans-serif !important; /* Use Squartiqa for headings */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.rules ul {
+    list-style: none;
+    padding: 0;
+}
+
+.rules li {
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for body text */
+    margin-bottom: 1rem;
+}
+
+/* Global Font Assignments */
+h1, h2 {
+    font-family: 'Squartiqa', sans-serif !important; /* Ensure all headings use Squartiqa */
 }
